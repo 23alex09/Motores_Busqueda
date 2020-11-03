@@ -8,6 +8,7 @@ package practica1;
 import java.io.IOException;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 
 /**
@@ -21,9 +22,14 @@ public class Practica1 {
      */
     public static void main(String[] args) throws SolrServerException, IOException {
         
-        Parse p = new Parse();
+        ParseDocuments pd = new ParseDocuments();
+        ParseQueries pq = new ParseQueries();
         
-        p.parseFile("ficheros_lisa/LISA0.001");
+        //pd.parseFile("ficheros_lisa/LISA0.001");
+        pq.parseFile("ficheros_lisa/LISA.QUE");
+        
+        SolrDocumentList [] documentos = pq.getDocumentos();
+        
         
     }
     
