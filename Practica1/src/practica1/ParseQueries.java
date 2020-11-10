@@ -32,7 +32,7 @@ public class ParseQueries {
         {
             String line = sc.nextLine();
             int idQ = Integer.parseInt(line);
-            System.out.println(idQ);
+            //System.out.println(idQ);
             line = sc.nextLine();
             String texto = line;
             while(!line.contains("#"))
@@ -44,7 +44,7 @@ public class ParseQueries {
             SolrQuery query = new SolrQuery();
             String [] palabras = texto.split(" ");
             String consulta = "";
-            for(int i = 0; i<10; i++)
+            for(int i = 0; i<3; i++)
             {
                 consulta = consulta + palabras[i] + " ";
             }
@@ -55,7 +55,7 @@ public class ParseQueries {
             //for (int i = 0; i < docs.size(); ++i) {
               //  System.out.println(docs.get(i));
             //}
-            documentos[j] = docs;
+            //documentos[j] = docs;
             j++;
         }
     }
