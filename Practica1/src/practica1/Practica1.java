@@ -30,7 +30,7 @@ public class Practica1 {
         
         SolrDocumentList [] documentos = pq.getDocumentos();
         
-        
+     
     }
     
 }

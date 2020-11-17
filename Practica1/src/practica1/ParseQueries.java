@@ -41,20 +41,21 @@ public class ParseQueries {
                 texto = texto + " " +line;
             }
             
-            SolrQuery query = new SolrQuery();
+            
             String [] palabras = texto.split(" ");
             String consulta = "";
-            for(int i = 0; i<3; i++)
+            for(int i = 0; i<5; i++)
             {
                 consulta = consulta + palabras[i] + " ";
             }
-            
+            //System.out.println(consulta);
+            SolrQuery query = new SolrQuery();
             query.setQuery(consulta);
             QueryResponse rsp = solr.query(query);
             SolrDocumentList docs = rsp.getResults();
-            //for (int i = 0; i < docs.size(); ++i) {
-              //  System.out.println(docs.get(i));
-            //}
+            for (int i = 0; i < docs.size(); ++i) {
+                System.out.println(docs.get(i));
+            }
             //documentos[j] = docs;
             j++;
         }
