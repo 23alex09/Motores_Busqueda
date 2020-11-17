@@ -40,8 +40,7 @@ public class ParseQueries {
                 line = sc.nextLine();
                 texto = texto + " " +line;
             }
-            
-            
+
             String [] palabras = texto.split(" ");
             String consulta = "";
             for(int i = 0; i<5; i++)
@@ -50,9 +49,12 @@ public class ParseQueries {
             }
             //System.out.println(consulta);
             SolrQuery query = new SolrQuery();
-            query.setQuery(consulta);
+            query.setQuery("text:" + consulta);
+            query.addField("id");
+            query.addField("score");
             QueryResponse rsp = solr.query(query);
             SolrDocumentList docs = rsp.getResults();
+            System.out.println("Query: " + j);
             for (int i = 0; i < docs.size(); ++i) {
                 System.out.println(docs.get(i));
             }
