@@ -23,12 +23,13 @@ public class Practica1 {
     public static void main(String[] args) throws SolrServerException, IOException {
         
         ParseDocuments pd = new ParseDocuments();
-        ParseQueries pq = new ParseQueries();
+        ParseQueries pq = new ParseQueries("ficheros_lisa/trec_top_file.txt");
         
         //pd.parseFile("ficheros_lisa/LISA0.001");
         pq.parseFile("ficheros_lisa/LISA.QUE");
         
-        SolrDocumentList [] documentos = pq.getDocumentos();
+        
+        //olrDocumentList [] documentos = pq.getDocumentos();
         
      
     }
