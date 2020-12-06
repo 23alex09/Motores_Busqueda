@@ -61,32 +61,52 @@ public class ParseQueries {
 
             String [] palabras = texto.split(" ");
             String consulta = "";
-            for(int i = 0; i<5; i++)
+            for(int i = 0; i < 5; i++)
             {
                 consulta = consulta + palabras[i] + " ";
             }
             //System.out.println(consulta);
             SolrQuery query = new SolrQuery();
-            query.setQuery("text:" + consulta);
+            query.setQuery("texto:" + consulta);
             query.addField("id");
             query.addField("score");
-            query.setFields("id, score");
+            query.setFields("id, score");     
             QueryResponse rsp = solr.query(query);
             SolrDocumentList docs = rsp.getResults();
+            
             //System.out.println("Query: " + j);
             for (int i = 0; i < docs.size(); ++i) {
-                //System.out.println(docs.get(i));
+                System.out.println(docs.get(i));
                 String idDocumento = (String) docs.get(i).getFieldValue("id");
                 int idConsulta = j;
                 float score = (float) docs.get(i).getFieldValue("score");
                 fichero.write(idConsulta + " Q0 " + idDocumento + " " + i + " " + score + " ETSI\n");
             }
+            
             //documentos[j] = docs;
             j++;
         }
         fichero.close();
         
     }
+    /*
+    public void crearTrec() throws IOException
+    {
+        FileWriter fichero = new FileWriter(archivo);
+        PrintWriter pw = new PrintWriter(archivo);
+        for(int i = 0; i < documentos.length; i++)
+        {
+            SolrDocumentList docs = documentos[i];
+            for (int j = 0; j < docs.size(); ++j) {
+                //System.out.println(docs.get(i));
+                String idDocumento = (String) docs.get(j).getFieldValue("id");
+                int idConsulta = j;
+                float score = (float) docs.get(j).getFieldValue("score");
+                fichero.write(idConsulta + " Q0 " + idDocumento + " " + j + " " + score + " ETSI\n");
+            }
+        }
+        fichero.close();
+    }*/
 
     public SolrDocumentList[] getDocumentos() {
         return documentos;

@@ -27,6 +27,7 @@ public class Practica1 {
         
         //pd.parseFile("ficheros_lisa/LISA0.001");
         pq.parseFile("ficheros_lisa/LISA.QUE");
+        //pq.crearTrec();
         
         
         //olrDocumentList [] documentos = pq.getDocumentos();

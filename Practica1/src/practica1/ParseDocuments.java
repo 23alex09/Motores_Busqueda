@@ -46,7 +46,7 @@ public class ParseDocuments {
                 texto = texto + " " + line;
                 line = sc.nextLine();                
             }            
-            doc.addField("text", texto);           
+            doc.addField("texto", texto);    
             solr.add(doc);
         }
         solr.commit();
